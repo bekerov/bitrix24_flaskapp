@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<h2>Сделки</h2>
+<table>
+    <tr>
+        <th>Наименование</th>
+        <th>Сумма сделки</th>
+        <th>Дата начала</th>
+        <th>Дата завершения</th>
+    </tr>
+    {% for deal in deals %}
+        <tr>
+            <td>{{ deal.TITLE }}</td>
+            <td>{{ deal.OPPORTUNITY }}</td>
+            <td>{{ deal.BEGINDATE|format_datetime }}</td>
+            <td>{{ deal.CLOSEDATE|format_datetime }}</td>
+        </tr>
+    {% endfor %}
+
+</table>
+
+<h2>Счета</h2>
+<table>
+    <tr>
+        <th>№</th>
+        <th>Наименование</th>
+        <th>Сумма</th>
+        <th>Дата выставления</th>
+        <th>Оплатить до</th>
+        <th>Кому</th>
+    </tr>
+    {% for invoice in invoices %}
+        <tr>
+            <td>{{ invoice.ACCOUNT_NUMBER }}</td>
+            <td>{{ invoice.ORDER_TOPIC }}</td>
+            <td>{{ invoice.PRICE }}</td>
+            <td>{{ invoice.DATE_BILL|format_datetime }}</td>
+            <td>{{ invoice.DATE_PAY_BEFORE|format_datetime }}</td>
+            <td>{{ invoice.UF_COMPANY_ID|company }}</td>
+        </tr>
+    {% endfor %}
+
+</table>
+</body>
+</html>
